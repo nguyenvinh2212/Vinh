@@ -1,0 +1,175 @@
+# depslib dependency file v1.0
+1742919055 source:c:\codeblock\project_game_sdl2\main.cpp
+	"main.h"
+
+1742731059 c:\codeblock\project_game_sdl2\common.h
+	<iostream>
+	<math.h>
+	<stdlib.h>
+	<ctype.h>
+	<cstring>
+	<string>
+	<vector>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	"def.h"
+	"Game_object.h"
+
+1742826582 c:\codeblock\project_game_sdl2\def.h
+
+1741930567 source:c:\codeblock\project_game_sdl2\baseobject.cpp
+	"BaseObject.h"
+
+1742692112 source:c:\codeblock\project_game_sdl2\background.cpp
+	"background.h"
+
+1742622390 c:\codeblock\project_game_sdl2\background.h
+	"Common.h"
+	"animation.h"
+
+1741709541 c:\codeblock\project_game_sdl2\baseobject.h
+	"Common.h"
+
+1741710320 source:c:\codeblock\project_game_sdl2\common.cpp
+	"Common.h"
+
+1742655373 source:c:\codeblock\project_game_sdl2\init.cpp
+	"init.h"
+	"graphic.h"
+
+1742655373 c:\codeblock\project_game_sdl2\init.h
+	"Common.h"
+
+1742783817 c:\codeblock\project_game_sdl2\main.h
+	"Common.h"
+	"menu.h"
+
+1741963688 source:c:\codeblock\project_game_sdl2\draw.cpp
+	"draw.h"
+
+1742052991 c:\codeblock\project_game_sdl2\draw.h
+	"Common.h"
+
+1742043141 c:\codeblock\project_game_sdl2\class.h
+	"Common.h"
+
+1742521293 source:c:\codeblock\project_game_sdl2\text.cpp
+
+1742485470 c:\codeblock\project_game_sdl2\text.h
+	"Common.h"
+
+1742919055 source:c:\codeblock\project_game_sdl2\menu.cpp
+	"Menu.h"
+	"graphic.h"
+
+1742811775 source:c:\codeblock\project_game_sdl2\input.cpp
+	"Common.h"
+	<algorithm>
+
+1742521444 source:c:\codeblock\project_game_sdl2\title.cpp
+	"title.h"
+
+1742521400 c:\codeblock\project_game_sdl2\title.h
+	"Common.h"
+	"graphic.h"
+
+1742348930 source:c:\codeblock\project_game_sdl2\util.cpp
+	"Common.h"
+
+1743044120 source:c:\codeblock\project_game_sdl2\stage.cpp
+	"Common.h"
+	"Stage.h"
+	"EnemyBullet.h"
+
+1742919104 c:\codeblock\project_game_sdl2\stage.h
+	"Common.h"
+	"Animation.h"
+	"graphic.h"
+	"PlayerBulletUpgrade.h"
+
+1742653975 source:c:\codeblock\project_game_sdl2\graphic.cpp
+	"graphic.h"
+
+1742554844 c:\codeblock\project_game_sdl2\graphic.h
+	"Common.h"
+	<unordered_map>
+
+1742825949 c:\codeblock\project_game_sdl2\game_object.h
+	"animation.h"
+	"Common.h"
+
+1742463176 source:c:\codeblock\project_game_sdl2\sound.cpp
+	"Common.h"
+
+1742463176 c:\codeblock\project_game_sdl2\sound.cpp
+	"Common.h"
+
+1742374361 c:\codeblock\project_game_sdl2\init.cpp
+	"init.h"
+	"sound.cpp"
+
+1742654022 c:\codeblock\project_game_sdl2\exploision.h
+	"Common.h"
+
+1742560705 source:c:\codeblock\project_game_sdl2\exploision.cpp
+	"Exploision.h"
+
+1742548755 c:\codeblock\project_game_sdl2\sound.h
+	"Common.h"
+
+1743072473 c:\codeblock\project_game_sdl2\animation.h
+	<string>
+	<SDL2/SDL.h>
+
+1742566695 c:\codeblock\project_game_sdl2\player.h
+	"Common.h"
+	"Game_object.h"
+
+1742911727 source:c:\codeblock\project_game_sdl2\game_object.cpp
+	"Game_object.h"
+	"animation.h"
+	"Common.h"
+
+1742566695 source:c:\codeblock\project_game_sdl2\player.cpp
+	"player.h"
+
+1742775140 source:c:\codeblock\project_game_sdl2\animation.cpp
+	"Animation.h"
+
+1742726711 source:c:\codeblock\project_game_sdl2\playerpower.cpp
+
+1742811181 source:c:\codeblock\project_game_sdl2\playerbulletupgrade.cpp
+	"PlayerBulletUpgrade.h"
+	<SDL2/SDL.h>
+	<cmath>
+
+1742811489 c:\codeblock\project_game_sdl2\playerbulletupgrade.h
+	"Game_object.h"
+	<vector>
+
+1742919055 c:\codeblock\project_game_sdl2\menu.h
+	"Common.h"
+
+1742814228 source:c:\codeblock\project_game_sdl2\boss.cpp
+	"Boss.h"
+	"graphic.h"
+	<cstdlib>
+	<cmath>
+
+1742805677 c:\codeblock\project_game_sdl2\boss.h
+	"Game_object.h"
+	<SDL2/SDL.h>
+	<cmath>
+
+1742911596 source:c:\codeblock\project_game_sdl2\enemybullet.cpp
+	"EnemyBullet.h"
+	<SDL2/SDL.h>
+	<cmath>
+	"def.h"
+
+1742833444 c:\codeblock\project_game_sdl2\enemybullet.h
+	<vector>
+	"Game_object.h"
+
