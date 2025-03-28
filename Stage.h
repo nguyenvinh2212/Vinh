@@ -9,7 +9,7 @@ extern bool gameState;
 float plannet_y = 100;
 extern Stage stage;
 extern App app;
-TextRenderer textManager("font/EnterCommand.ttf", 30);
+extern TextRenderer textManager;
 SoundManager sound;
 extern void doBackground();
 extern void drawBackground();

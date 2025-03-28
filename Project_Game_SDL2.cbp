@@ -37,6 +37,9 @@
 		<Unit filename="EnemyBullet.h" />
 		<Unit filename="Game_object.cpp" />
 		<Unit filename="Game_object.h" />
+		<Unit filename="Highscore.cpp" />
+		<Unit filename="Highscore.h" />
+		<Unit filename="Highscore.txt" />
 		<Unit filename="PlayerBulletUpgrade.cpp" />
 		<Unit filename="Stage.cpp" />
 		<Unit filename="Stage.h" />

@@ -3,7 +3,8 @@
 #define graphic_h
 #include "Common.h"
 #include <unordered_map>
-
+extern int soundVolume ;
+extern int musicVolume ;
 class TextRenderer
 {
 private:

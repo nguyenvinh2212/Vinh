@@ -1,6 +1,8 @@
 
 #include "graphic.h"
 std::unordered_map<std::string, SDL_Texture*> textureCache;
+int soundVolume = 100;
+int musicVolume = 100;
 //  Lấy texture từ cache
 SDL_Texture* getTexture(const char* name) {
     std::unordered_map<std::string, SDL_Texture*>::iterator it = textureCache.find(name);
@@ -164,11 +166,6 @@ void SoundManager::loadSounds() {
             std::cerr << "Failed to load sound " << i << " (" << soundFiles[i] << "): " << Mix_GetError() << std::endl;
         }
     }
-    Mix_VolumeChunk(sounds[SND_PLAYER_FIRE], MIX_MAX_VOLUME / 10);
-    Mix_VolumeChunk(sounds[SND_ALIEN_FIRE], MIX_MAX_VOLUME / 4);
-    Mix_VolumeChunk(sounds[SND_PLAYER_DIE], MIX_MAX_VOLUME / 3);
-    Mix_VolumeChunk(sounds[SND_ALIEN_DIE], MIX_MAX_VOLUME / 3);
-    Mix_VolumeChunk(sounds[SND_POINTS], MIX_MAX_VOLUME / 5);
 }
 
 

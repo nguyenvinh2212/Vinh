@@ -14,7 +14,7 @@
 
 #define PLAYER_SPEED			4
 #define PLAYER_BULLET_SPEED		8
-#define ENEMY_BULLET_SPEED		6
+#define ENEMY_BULLET_SPEED		5
 #define MAX_KEYBOARD_KEYS		350
 
 #define SIDE_PLAYER				0

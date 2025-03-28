@@ -62,7 +62,20 @@ public :
     int wave;
     int healthArr[15] = {1, 2, 2, 3, 3, 4, 4, 20, 5, 5, 5, 6, 6, 6 ,40};
     Enemy(int i = 1);
-    void update_enemy();
+     int diamondPhase; // 0: lên phải, 1: xuống phải, 2: xuống trái, 3: lên trái
+
+    // Dành cho chuyển động lượn cong:
+    float base_dy; // tốc độ dọc cơ bản
+
+    // Dành cho chuyển động vòng tròn:
+    float angle;      // góc hiện tại (radians)
+    float radius;     // bán kính vòng tròn
+    int centerX, centerY; // tâm di chuyển (có thể thay đổi theo thời gian)
+    virtual void update() override;
+private:
+    void updateDiamond();
+    void updateCurved();
+    void updateCircular();
 };
 
 
@@ -88,7 +101,6 @@ public:
     void initPlayer();
     void fireBullet();
     void doPlayer();
-    void doEnemies();
     void fireAlienBullet(Enemy *e);
     void doFighters();
     void doBullets();

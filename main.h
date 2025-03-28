@@ -3,8 +3,8 @@
 
 #include "Common.h"
 #include "menu.h"
-
-
+#include "graphic.h"
+#include "Highscore.h"
 extern void initgame();
 extern void initSDL();
 extern void initFonts();
@@ -14,6 +14,5 @@ extern void prepareScene();
 extern void presentScene();
 extern void close();
 extern doInput();
-App app;
-Stage stage;
+extern TextRenderer textManager;
 #endif // main_h

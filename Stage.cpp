@@ -1,6 +1,9 @@
 #include "Common.h"
 #include "Stage.h"
 #include "EnemyBullet.h"
+#include "Highscore.h"
+
+
 static int highscore = 0;
 static SDL_Texture* bulletTexture;
 static SDL_Texture* enemyTexture;
@@ -20,6 +23,7 @@ PlayerBulletUpgrade* bulletUpgrade = new PlayerBulletUpgrade();
 Animation* BulletEnemyAnimation = nullptr;
 Animation* CoinsAnimation = nullptr;
 EnemyBullet enemyBullet;
+extern HighScoreManager HighScore_Manager;
 void initStage()
 {
     bulletTexture = loadTexture("Image/playerBullet.png");
@@ -89,19 +93,6 @@ void Stage::doPlayer()
 			fireBullet();
 		}
 }
-void Stage::doEnemies()
-{
-    for(Enemy* e : enemies)
-    {
-        if(e->y > SCREEN_HEIGHT - e->h) e->health = 0;
-        e->reload --;
-        if(player && (e->reload) <= 0)
-        {
-            fireAlienBullet(e);
-            sound.playSound(SND_ALIEN_FIRE, CH_ALIEN_FIRE);
-        }
-    }
-}
 
 void Stage::fireAlienBullet(Enemy* e)
 {
@@ -113,16 +104,17 @@ void Stage::fireAlienBullet(Enemy* e)
 void Stage::doFighters()
 {
     player->update();
+    player->plannet->update(deltaTime);
+    plannet_y += 0.2;
     if(player->health <= 0)
         player = nullptr;
     if (player != nullptr) {
-        for (int i = 0; i < (int)enemies.size(); i++)
+        for (Enemy* e : enemies)
         {
-            Enemy* e = enemies[i];
             if (collision(player->x, player->y, player->w, player->h, e->x, e->y, e->w, e->h))
             {
                 addExplosions(player->x, player->y, 10);
-                player->health--;
+                if(!player->hasShield) player->health--;
                 e->health = 0;
             }
         }
@@ -131,7 +123,13 @@ void Stage::doFighters()
     for(int i =0 ;i < (int)enemies.size();i++)
     {
         Enemy* e = enemies[i];
-        e->update_enemy();
+        e->update();
+        e->reload --;
+        if(player && (e->reload) <= 0)
+        {
+            fireAlienBullet(e);
+            sound.playSound(SND_ALIEN_FIRE, CH_ALIEN_FIRE);
+        }
         if(e->health <= 0)
         {
             delete e;
@@ -151,7 +149,7 @@ void Stage::doBullets()
         b->update();
         if(b->side == SIDE_ALIEN) BulletEnemyAnimation->update(deltaTime);
 ;        if (checkBulletHit(b) ||checkBulletHit(b, player) || b->x < -b->w || b->y < -b->h ||
-            b->x > SCREEN_WIDTH || b->y > SCREEN_HEIGHT)
+            b->x > SCREEN_WIDTH  || b->y > SCREEN_HEIGHT)
         {
             delete b;
             std::swap(bullets[i],bullets.back());
@@ -186,7 +184,8 @@ bool Stage::checkBulletHit(Entity* b, Player* p)
                 if(e->health == 0) addDebris(e);
                 if(e->health == 0 )
                 {
-                    if(e->health <=0 ) score +=10;
+                    if(e->wave == 7 || e->wave == 14) score +=100;
+                    else score += 10;
                     int r = rand() % 100;
                     if(r < 70) ;
                     else if (r < 85)
@@ -209,7 +208,7 @@ void Stage::spawnEnemies()
         if (--waveDelayTimer <= 0) {
             waveInProgress = true;
             if(wave == 7 || wave == 14)  enemiesRemainingInWave = 1;
-            else enemiesRemainingInWave = wave + 7;
+            else enemiesRemainingInWave = wave + 2 + rand()%5;
             enemySpawnTimer = 0;
         }
     }
@@ -416,6 +415,7 @@ void Stage::logic()
     if (player == nullptr) gameOver = true;
     if(victory || gameOver)
     {
+        HighScore_Manager.addScore(stage.score);
         if (app.keyboard[SDL_SCANCODE_LEFT])
         {
             menuChoice = 1; // YES
@@ -438,7 +438,6 @@ void Stage::logic()
          return;
     }
     doPlayer();       // xử lý logic người chơi (đi chuyển, bắn đạn)
-    doEnemies();      // xử lý logic kẻ thù
     doFighters();     // cập nhật vị trí và trạng thái của tất cả fighters
     doBullets();      // cập nhật vị trí và kiểm tra va chạm của đạn
     doExplosions();   // cập nhật trạng thái hiệu ứng nổ
@@ -502,9 +501,6 @@ void Stage::draw()
     }
 
     if(player) {
-
-        player->plannet->update(deltaTime);
-        plannet_y += 0.2;
         if(plannet_y > SCREEN_HEIGHT) plannet_y-=SCREEN_HEIGHT;
         player->plannet->render(app.renderer,50 , plannet_y);
         blit(player->texture, player->x, player->y);

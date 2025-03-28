@@ -2,15 +2,15 @@
 #define MENU_H
 
 #include "Common.h"
-extern void doBackground();
-extern void drawBackground();
-extern bool gameState;
+
+// Cấu trúc một item trong menu
 struct MenuItem {
     std::string label;
     int x, y;
     SDL_Texture* normal;
     SDL_Texture* selected;
-    void (*action)();
+    void (*action)();  // Hàm xử lý khi chọn item này
+
 };
 
 class Menu {
@@ -20,15 +20,26 @@ public:
     void init();
     void update();
     void draw();
-    bool isActive() const { return active; }
-    void setActive(bool a) { active = a; }
-
+    void switchToOptions();
+    void switchToMain();
+    void switchToControls();
+    void switchToHighScores();
 private:
-    std::vector<MenuItem> items;
+    // Hai hàm khởi tạo danh sách items riêng cho từng trạng thái
+
     int activeIndex;
     bool active;
     SDL_Texture* title;
+    bool inOptionsMenu;
+    bool inControlsMenu; // (MỚI) true = đang ở màn hình Controls
+    bool inHighScoresMenu;
 
+    std::vector<MenuItem> items;
+
+    void initMainItems();
+    void initOptionsItems();
+    void initControlsItems();
+    void initHighScores();
 };
 
 #endif // MENU_H
